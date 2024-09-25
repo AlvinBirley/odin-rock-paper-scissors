@@ -1,6 +1,13 @@
+
+//Declare user score variable 
+let userScore = 0 
+
+//Declare computer score variable
+let compScore = 0 
+
+
 //Computer choice array
 let rpsArray = ["rock", "paper", "scissors"];
-
 
 //Selecting the rock button
 const rockBtn = document.getElementById("rock");
