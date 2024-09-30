@@ -1,5 +1,5 @@
 //Select div with the id of "score"
-const scoreDiv = document.getElementById("score")
+let scoreDiv = document.getElementById("score")
 //Declare user score variable 
 let userScore = 0 
 
@@ -23,10 +23,78 @@ let lastUserChoice = ""
 
 
 function playRound(humanChoice, computerChoice){
+  
     console.log(humanChoice)
     console.log(computerChoice)
+ if (humanChoice==="rock"&&computerChoice==="rock"){
+        const content = document.createElement('div');
+        content.classList.add('content');
+        content.textContent = 'Rock vs Rock: Tie Game.';
+        score.appendChild(content);
+ }
+
+ else if (humanChoice==="paper"&&computerChoice==="paper"){
+            const content = document.createElement('div');
+            content.classList.add('content');
+            content.textContent = 'Paper vs Paper: Tie Game.';
+            score.appendChild(content);
+    }
+    else if (humanChoice==="scissors"&&computerChoice==="scissors"){
+        const content = document.createElement('div');
+        content.classList.add('content');
+        content.textContent = 'Scissors vs Scissors: Tie Game.';
+        score.appendChild(content);
     }
     
+        else if (humanChoice==="rock"&&computerChoice==="paper"){
+            const content = document.createElement('div');
+            content.classList.add('content');
+            content.textContent = 'Rock vs Paper: You lose.';
+            score.appendChild(content);
+
+    }
+
+    else if (humanChoice==="rock"&&computerChoice==="scissors"){
+        const content = document.createElement('div');
+        content.classList.add('content');
+        content.textContent = 'Rock vs Scissors: You win.';
+        score.appendChild(content);
+
+}
+else if (humanChoice==="paper"&&computerChoice==="rock"){
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = 'Paper vs Rock: You win.';
+    score.appendChild(content);
+}
+
+else if (humanChoice==="paper"&&computerChoice==="scissors"){
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = 'Paper vs Scissors: You lose.';
+    score.appendChild(content);
+}
+
+else if (humanChoice==="paper"&&computerChoice==="scissors"){
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = 'Paper vs Scissors: You lose.';
+    score.appendChild(content);
+}
+else if (humanChoice==="scissors"&&computerChoice==="rock"){
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = 'Scissors vs Rock: You lose.';
+    score.appendChild(content);
+}
+else {
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = 'Scissors vs Paper: You win.';
+    score.appendChild(content);
+}
+
+}
 
     function getButtonValue(event) {
         return event.target.value; 
@@ -39,6 +107,9 @@ function playRound(humanChoice, computerChoice){
        let robotChoice = getComputerChoice();
        playRound(lastUserChoice, robotChoice)
     }
+
+
+
     
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
