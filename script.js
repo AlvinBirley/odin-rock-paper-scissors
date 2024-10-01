@@ -23,10 +23,8 @@ let lastUserChoice = ""
 
 
 function playRound(humanChoice, computerChoice){
-  
-    console.log(humanChoice)
-    console.log(computerChoice)
- if (humanChoice==="rock"&&computerChoice==="rock"){
+
+    if (humanChoice==="rock"&&computerChoice==="rock"){
         const content = document.createElement('div');
         content.classList.add('content');
         content.textContent = 'Rock vs Rock: Tie Game.';
@@ -51,7 +49,7 @@ function playRound(humanChoice, computerChoice){
             content.classList.add('content');
             content.textContent = 'Rock vs Paper: You lose.';
             score.appendChild(content);
-
+            compScore++
     }
 
     else if (humanChoice==="rock"&&computerChoice==="scissors"){
@@ -59,13 +57,14 @@ function playRound(humanChoice, computerChoice){
         content.classList.add('content');
         content.textContent = 'Rock vs Scissors: You win.';
         score.appendChild(content);
-
+        userScore++
 }
 else if (humanChoice==="paper"&&computerChoice==="rock"){
     const content = document.createElement('div');
     content.classList.add('content');
     content.textContent = 'Paper vs Rock: You win.';
     score.appendChild(content);
+    userScore++
 }
 
 else if (humanChoice==="paper"&&computerChoice==="scissors"){
@@ -73,6 +72,7 @@ else if (humanChoice==="paper"&&computerChoice==="scissors"){
     content.classList.add('content');
     content.textContent = 'Paper vs Scissors: You lose.';
     score.appendChild(content);
+     compScore++
 }
 
 else if (humanChoice==="paper"&&computerChoice==="scissors"){
@@ -80,18 +80,37 @@ else if (humanChoice==="paper"&&computerChoice==="scissors"){
     content.classList.add('content');
     content.textContent = 'Paper vs Scissors: You lose.';
     score.appendChild(content);
+    compScore++
 }
 else if (humanChoice==="scissors"&&computerChoice==="rock"){
     const content = document.createElement('div');
     content.classList.add('content');
     content.textContent = 'Scissors vs Rock: You lose.';
     score.appendChild(content);
+    compScore++
 }
 else {
     const content = document.createElement('div');
     content.classList.add('content');
     content.textContent = 'Scissors vs Paper: You win.';
     score.appendChild(content);
+    userScore++
+}
+
+if (userScore===3){
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = 'You win! Game over.';
+    score.appendChild(content);
+    deactivateAllButtons();
+}
+
+else if (compScore===3) {
+    const content = document.createElement('div');
+    content.classList.add('content');
+    content.textContent = 'You lose! Game over.';
+    score.appendChild(content);
+    deactivateAllButtons();
 }
 
 }
@@ -115,3 +134,10 @@ else {
     buttons.forEach(button => {
         button.addEventListener('click', handleButtonClick);
     });
+
+    function deactivateAllButtons() {
+      
+        buttons.forEach(button => {
+          button.disabled = true;
+        });
+      }
